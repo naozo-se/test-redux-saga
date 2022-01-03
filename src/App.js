@@ -7,30 +7,32 @@ import {
 } from "./action/temp";
 
 const App = () => {
+  // 入力内容設定のstate
   const [title, setTitle] = useState("");
+  // 実行dispatch
   const dispatch = useDispatch();
+  // reducerのデータ取得(リアルタイム)
   const tempData = useSelector((state) => state.temp.data);
-
+  // 追加ボタン
   const addClickHandler = () => {
     const id = uuidv1();
     if (title) {
+      // 追加のアクションを実行
       dispatch(tempActions[tempActionNames.ADD_DATA]({ title, id }));
       setTitle("");
     }
   };
-
+  // データ取得ボタン
   const getClickHandler = () => {
+    // データ取得のアクションを実行
     dispatch(tempActions[tempActionNames.GET_DATA]());
   };
-
-  const removeClickHandler = () => {
+  // データクリアボタン
+  const clearClickHandler = () => {
+    // データクリアのアクションを実行
     dispatch(tempActions[tempActionNames.CLEAR_DATA]());
     setTitle("");
   };
-
-  useEffect(() => {
-    console.log("tempData", tempData);
-  }, [tempData]);
 
   return (
     <>
@@ -43,8 +45,9 @@ const App = () => {
       />
       <button onClick={addClickHandler}>ADD</button>
       <button onClick={getClickHandler}>GET</button>
-      <button onClick={removeClickHandler}>REMOVE</button>
+      <button onClick={clearClickHandler}>CLEAR</button>
       <ul>
+        {/* データの出力 */}
         {tempData.length > 0
           ? tempData.map((item, idx) => (
               <li key={idx}>

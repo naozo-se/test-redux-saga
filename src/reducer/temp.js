@@ -9,9 +9,10 @@ const initialState = {
 const tempReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionNames.ADD_DATA:
+      // データの追加
       return { ...state, data: state.data.concat(action.payload) };
     case action.type === actionNames.CLEAR_DATA:
-      // stateのデータをクリア
+      // データのクリア
       return { ...state, data: [] };
     default:
       return state;
