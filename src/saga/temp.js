@@ -21,6 +21,7 @@ function* fetchDataSaga() {
 }
 
 // Fetch処理(リクエスト部分)
+// [{ "id": "id_value1", "title": "title_value1" },{ "id": "id_value2", "title": "title_value2" }, ...]
 const fetchData = () => {
   return fetch("http://localhost:8000/testdata/temp").then((response) =>
     response.json()

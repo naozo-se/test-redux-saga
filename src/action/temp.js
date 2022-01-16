@@ -1,8 +1,11 @@
+// actionのベース定義名
+export const actionBaseNames = "temp";
+
 // actionの名称定義
 export const actionNames = {
-  ADD_DATA: "ADD_DATA",
-  CLEAR_DATA: "CLEAR_DATA",
-  GET_DATA: "GET_DATA",
+  ADD_DATA: `${actionBaseNames}_ADD_DATA`,
+  CLEAR_DATA: `${actionBaseNames}_CLEAR_DATA`,
+  GET_DATA: `${actionBaseNames}_GET_DATA`,
 };
 
 // action処理の定義

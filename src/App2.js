@@ -2,42 +2,42 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v1 as uuidv1 } from "uuid";
 import {
-  actions as tempActions,
-  actionNames as tempActionNames,
-  actionBaseNames as tempBaseName,
-} from "./action/temp";
+  actions as testActions,
+  actionNames as testActionNames,
+  actionBaseNames as testBaseName,
+} from "./action/test";
 
-const App = () => {
+const App2 = () => {
   // 入力内容設定のstate
   const [title, setTitle] = useState("");
   // 実行dispatch
   const dispatch = useDispatch();
   // reducerのデータ取得(リアルタイム)
-  const tempData = useSelector((state) => state[tempBaseName].data);
+  const testData = useSelector((state) => state[testBaseName].data);
   // 追加ボタン
   const addClickHandler = () => {
     const id = uuidv1();
     if (title) {
       // 追加のアクションを実行
-      dispatch(tempActions[tempActionNames.ADD_DATA]({ title, id }));
+      dispatch(testActions[testActionNames.ADD_DATA]({ title, id }));
       setTitle("");
     }
   };
   // データ取得ボタン
   const getClickHandler = () => {
     // データ取得のアクションを実行
-    dispatch(tempActions[tempActionNames.GET_DATA]());
+    dispatch(testActions[testActionNames.GET_DATA]());
   };
   // データクリアボタン
   const clearClickHandler = () => {
     // データクリアのアクションを実行
-    dispatch(tempActions[tempActionNames.CLEAR_DATA]());
+    dispatch(testActions[testActionNames.CLEAR_DATA]());
     setTitle("");
   };
 
   return (
     <>
-      <h1>temp</h1>
+      <h1>test</h1>
       <label htmlFor="title">Title</label>
       <input
         type="text"
@@ -50,8 +50,8 @@ const App = () => {
       <button onClick={clearClickHandler}>CLEAR</button>
       <ul>
         {/* データの出力 */}
-        {tempData.length > 0
-          ? tempData.map((item, idx) => (
+        {testData.length > 0
+          ? testData.map((item, idx) => (
               <li key={idx}>
                 {item.title} / {item.id}
               </li>
@@ -62,4 +62,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App2;

@@ -11,7 +11,7 @@ const tempReducer = (state = initialState, action) => {
     case actionNames.ADD_DATA:
       // データの追加
       return { ...state, data: state.data.concat(action.payload) };
-    case action.type === actionNames.CLEAR_DATA:
+    case actionNames.CLEAR_DATA:
       // データのクリア
       return { ...state, data: [] };
     default:
